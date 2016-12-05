@@ -221,7 +221,7 @@
           "operation": "create_elasticlogs_write",
           "clients": 1,
           "warmup-iterations": 0,
-          "iterations": 1,
+          "iterations": 1
         },
         {
           "parallel": {
