@@ -5,19 +5,19 @@ import datetime
 import calendar
 import gzip
 import re
-from weightedarray import WeightedArray
+from parameter_sources.weightedarray import WeightedArray
 
 class Agent:
     def __init__(self):
-        self._agents = WeightedArray('data/agents.json.gz')
+        self._agents = WeightedArray('parameter_sources/data/agents.json.gz')
 
-        with gzip.open('data/agents_name_lookup.json.gz', 'rt') as data_file:    
+        with gzip.open('parameter_sources/data/agents_name_lookup.json.gz', 'rt') as data_file:    
             self._agents_name_lookup = json.load(data_file)
 
-        with gzip.open('data/agents_os_lookup.json.gz', 'rt') as data_file:    
+        with gzip.open('parameter_sources/data/agents_os_lookup.json.gz', 'rt') as data_file:    
             self._agents_os_lookup = json.load(data_file)
 
-        with gzip.open('data/agents_os_name_lookup.json.gz', 'rt') as data_file:    
+        with gzip.open('parameter_sources/data/agents_os_name_lookup.json.gz', 'rt') as data_file:    
             self._agents_os_name_lookup = json.load(data_file)
 
     def add_fields(self, event):
@@ -32,13 +32,13 @@ class Agent:
 class ClientIp:
     def __init__(self):
         self._rare_clientip_probability = 0.269736965199
-        self._clientips = WeightedArray('data/clientips.json.gz')
-        self._rare_clientips = WeightedArray('data/rare_clientips.json.gz')
+        self._clientips = WeightedArray('parameter_sources/data/clientips.json.gz')
+        self._rare_clientips = WeightedArray('parameter_sources/data/rare_clientips.json.gz')
 
-        with gzip.open('data/clientips_country_lookup.json.gz', 'rt') as data_file:    
+        with gzip.open('parameter_sources/data/clientips_country_lookup.json.gz', 'rt') as data_file:    
             self._clientips_country_lookup = json.load(data_file)
 
-        with gzip.open('data/clientips_location_lookup.json.gz', 'rt') as data_file:    
+        with gzip.open('parameter_sources/data/clientips_location_lookup.json.gz', 'rt') as data_file:    
             self._clientips_location_lookup = json.load(data_file)
 
     def add_fields(self, event):
@@ -67,9 +67,9 @@ class ClientIp:
 
 class Referrer:
     def __init__(self):
-        self._referrers = WeightedArray('data/referrers.json.gz')
+        self._referrers = WeightedArray('parameter_sources/data/referrers.json.gz')
 
-        with gzip.open('data/referrers_url_base_lookup.json.gz', 'rt') as data_file:    
+        with gzip.open('parameter_sources/data/referrers_url_base_lookup.json.gz', 'rt') as data_file:    
             self._referrers_url_base_lookup = json.load(data_file)
 
     def add_fields(self, event):
@@ -79,9 +79,9 @@ class Referrer:
 
 class Request:
     def __init__(self):
-        self._requests = WeightedArray('data/requests.json.gz')
+        self._requests = WeightedArray('parameter_sources/data/requests.json.gz')
 
-        with gzip.open('data/requests_url_base_lookup.json.gz', 'rt') as data_file:    
+        with gzip.open('parameter_sources/data/requests_url_base_lookup.json.gz', 'rt') as data_file:    
             self._requests_url_base_lookup = json.load(data_file)
 
     def add_fields(self, event):
