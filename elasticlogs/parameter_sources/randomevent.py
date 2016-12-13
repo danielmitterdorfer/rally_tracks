@@ -5,11 +5,14 @@ import datetime
 import calendar
 import gzip
 import re
-from parameter_sources.weightedarray import WeightedArray
+import os
+from elasticlogs.parameter_sources.weightedarray import WeightedArray
+
+cwd = os.path.dirname(os.path.realpath(__file__))
 
 class Agent:
     def __init__(self):
-        self._agents = WeightedArray('parameter_sources/data/agents.json.gz')
+        self._agents = WeightedArray('%s/data/agents.json.gz' % cwd)
 
         with gzip.open('parameter_sources/data/agents_name_lookup.json.gz', 'rt') as data_file:    
             self._agents_name_lookup = json.load(data_file)

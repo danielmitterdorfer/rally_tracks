@@ -1,8 +1,6 @@
-from parameter_sources.elasticlogs_bulk_source import ElasticlogsBulkSource
+from elasticlogs.parameter_sources.elasticlogs_bulk_source import ElasticlogsBulkSource
 
-import runners.rollover_runner
-import runners.scanscroll_runner
-import runners.createindex_runner
+from elasticlogs.runners import rollover_runner, scanscroll_runner, createindex_runner
 
 def register(registry):
     registry.register_param_source("elasticlogs", ElasticlogsBulkSource)
